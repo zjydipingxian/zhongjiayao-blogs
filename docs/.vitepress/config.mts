@@ -15,7 +15,7 @@ import { blogTheme } from "./blog-theme";
 export default defineConfig({
   // 继承博客主题(@sugarat/theme)
   extends: blogTheme,
-  // base,
+  base: '/zhongjiayao-blogs/',
   lang: "zh-cn",
   title: "zhong JiaYao",
   description: "粥里有勺糖的博客主题，基于 vitepress 实现",
