@@ -38,7 +38,7 @@ export default defineConfig({
     lastUpdatedText: "上次更新于",
 
     // 设置logo
-    logo: "/logo.png",
+    logo: "/1.jpg",
     // editLink: {
     //   pattern:
     //     'https://github.com/ATQQ/sugar-blog/tree/master/packages/blogpress/:path',
