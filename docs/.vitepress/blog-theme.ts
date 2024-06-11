@@ -51,6 +51,15 @@ const blogTheme = getThemeConfig({
 
   // 友链
   friend: [
+
+    {
+      nickname: '火龙会打洞',
+      des: '两千一百万分之一的命运种子👋',
+      avatar:
+        'https://framerusercontent.com/images/3AoDmHtmZQKTvdp1zfVu7vPI8.png',
+      url: 'https://arvin.framer.website/',
+    },
+
     {
       nickname: '粥里有勺糖',
       des: '你的指尖用于改变世界的力量',
