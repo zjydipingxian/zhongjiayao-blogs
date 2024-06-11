@@ -50,7 +50,7 @@ export default defineConfig({
         text: "技术笔记",
         items: [
           { text: "学习笔记", link: "/technology/study/index" },
-          { text: "源码学习", link: "/technology/source" },
+          { text: "vue", link: "/vue/index" },
         ],
       },
       // { text: "关于作者", link: "https://sugarat.top/aboutme.html" },
