@@ -53,7 +53,7 @@ export default defineConfig({
           { text: "源码学习", link: "/technology/source" },
         ],
       },
-      { text: "关于作者", link: "https://sugarat.top/aboutme.html" },
+      // { text: "关于作者", link: "https://sugarat.top/aboutme.html" },
       {
         text: "线上作品",
         items: [
