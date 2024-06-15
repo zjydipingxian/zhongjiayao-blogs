@@ -51,6 +51,7 @@ export default defineConfig({
         items: [
           { text: "学习笔记", link: "/technology/study/index" },
           { text: "vue", link: "/vue/index" },
+          { text: "webpack5", link: "/webpack5/index" },
         ],
       },
       // { text: "关于作者", link: "https://sugarat.top/aboutme.html" },
