@@ -168,7 +168,7 @@ pnpm webpack
 :::code-group
 
 ```sh [ PNPM]
-pnpm npm i css-loader style-loader -D
+pnpm npm i html-webpack-plugin -D -D
 
 ```
 
@@ -264,4 +264,64 @@ console.log(sum(1, 2, 3, 4))
     test: /\.(png|jpe?g|gif|webp)$/,
     type: "asset",
 },
+```
+
+## Plugin（插件）
+
+> loader 用于转换某些类型的模块，而插件则可以用于执行范围更广的任务。包括：打包优化，资源管理，注入环境变量。
+
+### 1. 处理 Html 资源
+
+:::code-group
+
+```sh [ PNPM]
+pnpm npm i css-loader style-loader -D
+
+```
+
+```sh [ npm]
+
+npm i html-webpack-plugin -D -D
+
+```
+
+:::
+
+### 2. 配置
+
+```js
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin') // [!code focus]
+module.exports = {
+  entry: './src/main.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js',
+  },
+
+  module: {
+    rules: [
+      {
+        // 用来匹配 .css 结尾的文件
+        test: /\.css$/,
+        // use 数组里面 Loader 执行顺序是从右到左
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+
+  plugins: [
+    // [!code focus:6]
+    new HtmlWebpackPlugin({
+      // 以 public/index.html 为模板创建文件
+      // 新的html文件有两个特点：1. 内容和源文件一致 2. 自动引入打包生成的js等资源
+      template: path.resolve(__dirname, 'public/index.html'),
+    }),
+  ],
+  mode: 'development',
+}
+```
+
+```
+
 ```
