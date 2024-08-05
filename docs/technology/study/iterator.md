@@ -137,11 +137,34 @@ for (const value of obj) {
 }
 
 // 那么我们可以这样
-// 那么我们可以这样
+
 let obj = {
-  key: 1,
+  a: 1,
+  b: 2,
+  c: 3,
   [Symbol.iterator]: function () {
-    return Object.values(this)[Symbol.iterator]()
+    let i = 0
+
+    let map = new Map()
+    map.set('a', 1)
+    map.set('b', 2)
+    map.set('c', 3)
+
+    // 2. 实现 next() 方法
+    return {
+      next() {
+        let mapEntry = [...map.entries()]
+        // 当不超过数组长度时，返回一个对象，包含两个属性：value和done。
+        if (i < map.size) {
+          return {
+            value: mapEntry[i++],
+            done: false,
+          }
+        }
+
+        return { value: undefined, done: true }
+      },
+    }
   },
 }
 
@@ -150,6 +173,6 @@ for (const value of obj) {
   console.log(value) // 不报错了: TypeError: obj is not iterable
 }
 
-var [key] = obj
-console.log('🚀 ~ key:', key) // 1
+var [a, b, c] = obj
+console.log('🚀 ~ key:', a, b, c)
 ```
