@@ -111,7 +111,7 @@ console.log(iterator.next()) // {value: undefined, done: true}
 console.log(iterator.next()) // {value: undefined, done: true}
 ```
 
-## 5. 自定义的迭代
+## 5. 自定义的迭代器
 
 ::: tip :tada:
 如果希望自己创建的一个对象，默认也是可以迭代的，那么就可以在创建类的时候，给它加一个属性上添加方法[Symbol.iterator]，那么这个对象就也可以被 for...of 遍历了
