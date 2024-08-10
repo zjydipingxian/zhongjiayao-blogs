@@ -340,3 +340,90 @@ Object.getOwnPropertyDescriptor(obj, 'foo')
 - `Object.keys()`：返回对象自身的所有可枚举的属性的键名。
 - `JSON.stringify()`：只串行化对象自身的可枚举的属性。
 - `Object.assign()`： 忽略 enumerable 为 false 的属性，只拷贝对象自身的可枚举
+
+## 5. symbol (基本类型)
+
+ES6 新增数据类型 symbol，用于声明独一无二的值，常定义对象自由变量，取值用中括号，该对象属性不易遍历，可通过特定方法如 object.getProperty 或反射获取，其最大用途是定义对象自由变量，项目开发中使用较少。
+
+```js
+const name = Symbol('name')
+const name2 = Symbol('name')
+console.log(name === name2) // false
+
+// 用来定义对象的私有变量
+let s1 = Symbol('s1')
+console.log(s1)
+let obj = {}
+obj[s1] = 'zjy' // 等价于 obj = {  [s1]: 'zjy'   }
+//如果用 Symbol 定义的是对象中的变量，取值时一定要用 [变量名]
+console.log(obj[s1])
+console.log(obj.s1) // 会报错
+
+
+
+如果用 Symbol 定义的是对象中的变量，该变量不能作为key，无法用 for 循环遍历
+for(let key in obj){
+  console.log(key);    // 没有输出
+}
+console.log(Object.keys(obj));    // 输出一个空数组 []
+```
+
+![alt text](image-12.png)
+
+## 6. Set
+
+ES6 中的集合（set），特点为无重复值的有序列表。可通过 new set 创建空集合，用 add 方法添加元素，delete 方法删除，has 方法校验，size 访问长度，还能通过扩展运算符转数组。集合中对象引用无法释放，可用 weakSet 但有局限性。重点记 set 特点和常用方法
+
+```js
+let set = new Set()
+
+// 添加任何值
+set.add(1)
+set.add({ a: 1 })
+
+// 删除元素
+set.delete({ a: 1 })
+
+// 校验某个值是否存在
+console.log(set.has(1)) // 返回 true
+
+// 访问集合的长度
+console.log(set.size)
+
+// set 转换成 数组
+let set2 = new Set([1, 2, 3, 4])
+// 使用扩展运算符
+let arr = [...set2]
+console.log(arr)
+```
+
+::: tip weakSet 与 Set 区别
+
+1. 值的类型：WeakSet 的值必须都是对象类型，不能是其他类型（如基本数据类型）。
+2. 弱引用：WeakSet 中的对象都是弱引用，即垃圾回收机制不考虑 WeakSet 对该对象的引用。如果其他对象都不再引用该对象，那么垃圾回收机制会自动回收该对象所占用的内存，不考虑该对象还存在于 WeakSet 之中。
+3. 不可遍历：WeakSet 没有 size 属性，不能被遍历，也没有 keys()、values()、entries()等方法。
+   :::
+
+![alt text](image-13.png)
+
+## 7. Map
+
+Map 是键值对的有序列表，键值可为任意类型。可通过 new 创建空 Map，用 set 方法设值，get 方法取值，还有 clear、delete 等方法。可初始化，与 set 类似，某些情况用 Map 更方便。
+
+```js
+let map = new Map()
+
+// 添加
+map.set('a', 1)
+map.set('b', 2)
+
+// 获取
+console.log(map.get('a'))
+
+// 删除
+map.delete('a')
+// 是否包含
+console.log(map.has('b')) // true
+```
+
+![alt text](image-14.png)
